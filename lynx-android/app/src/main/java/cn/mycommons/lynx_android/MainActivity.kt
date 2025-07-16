@@ -6,6 +6,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cn.mycommons.lynx_android.lynx.DemoLynxImageFetcher
+import cn.mycommons.lynx_android.lynx.DemoTemplateProvider
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun buildLynxView(): LynxView {
         val viewBuilder: LynxViewBuilder = LynxViewBuilder()
+        viewBuilder.setImageFetcher(DemoLynxImageFetcher(this))
         viewBuilder.setTemplateProvider(DemoTemplateProvider(this))
         return viewBuilder.build(this)
     }

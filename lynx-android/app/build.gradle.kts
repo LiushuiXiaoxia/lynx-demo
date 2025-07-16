@@ -41,6 +41,8 @@ android {
     }
 }
 
+val lynxVersion = "3.3.0"
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -50,13 +52,13 @@ dependencies {
 
     // lynx sdk
     // lynx dependencies
-    implementation("org.lynxsdk.lynx:lynx:3.2.0")
-    implementation("org.lynxsdk.lynx:lynx-jssdk:3.2.0")
-    implementation("org.lynxsdk.lynx:lynx-trace:3.2.0")
-    implementation("org.lynxsdk.lynx:primjs:2.12.0")
+    implementation("org.lynxsdk.lynx:lynx:$lynxVersion")
+    implementation("org.lynxsdk.lynx:lynx-jssdk:$lynxVersion")
+    implementation("org.lynxsdk.lynx:lynx-trace:$lynxVersion")
+    implementation("org.lynxsdk.lynx:primjs:2.13.2")
 
     // integrating image-service
-    implementation("org.lynxsdk.lynx:lynx-service-image:3.2.0")
+    implementation("org.lynxsdk.lynx:lynx-service-image:$lynxVersion")
 
     // image-service dependencies, if not added, images cannot be loaded; if the host APP needs to use other image libraries, you can customize the image-service and remove this dependency
     implementation("com.facebook.fresco:fresco:2.3.0")
@@ -66,13 +68,13 @@ dependencies {
     implementation("com.facebook.fresco:animated-base:2.3.0")
 
     // integrating log-service
-    implementation("org.lynxsdk.lynx:lynx-service-log:3.2.0")
+    implementation("org.lynxsdk.lynx:lynx-service-log:$lynxVersion")
 
     // integrating http-service
-    implementation("org.lynxsdk.lynx:lynx-service-http:3.2.0")
+    implementation("org.lynxsdk.lynx:lynx-service-http:$lynxVersion")
 
-    debugImplementation("org.lynxsdk.lynx:lynx-devtool:3.2.0")
-    debugImplementation("org.lynxsdk.lynx:lynx-service-devtool:3.2.0")
+    debugImplementation("org.lynxsdk.lynx:lynx-devtool:$lynxVersion")
+    debugImplementation("org.lynxsdk.lynx:lynx-service-devtool:$lynxVersion")
 
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 

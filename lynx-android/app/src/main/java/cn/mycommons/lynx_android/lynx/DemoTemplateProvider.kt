@@ -1,9 +1,8 @@
-package cn.mycommons.lynx_android
+package cn.mycommons.lynx_android.lynx
 
 import android.content.Context
 import android.util.Log
 import com.lynx.tasm.provider.AbsTemplateProvider
-import java.io.IOException
 import kotlin.concurrent.thread
 
 class DemoTemplateProvider(context: Context) : AbsTemplateProvider() {
@@ -13,13 +12,13 @@ class DemoTemplateProvider(context: Context) : AbsTemplateProvider() {
         private const val TAG = "DemoTemplateProvider"
     }
 
-    private var mContext: Context = context.applicationContext
+    private var app: Context = context.applicationContext
 
     override fun loadTemplate(uri: String, callback: Callback) {
         Log.i(TAG, "loadTemplate: uri = $uri")
         thread {
             runCatching {
-                val data = mContext.assets.open(uri).use { it.readBytes() }
+                val data = app.assets.open(uri).use { it.readBytes() }
                 callback.onSuccess(data)
             }.onSuccess {
                 Log.i(TAG, "loadTemplate: uri = $uri, success")

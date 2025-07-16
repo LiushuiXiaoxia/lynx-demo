@@ -7,7 +7,7 @@ import com.lynx.tasm.service.LynxServiceCenter
 object LynxApp {
 
     fun initLynxService() {
-        LynxServiceCenter.inst().registerService(LynxDevToolService)
+         LynxServiceCenter.inst().registerService(LynxDevToolService.INSTANCE)
     }
 
     fun initLynxEnv() {
