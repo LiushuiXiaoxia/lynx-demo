@@ -44,6 +44,7 @@ android {
 }
 
 val lynxVersion = "3.3.0"
+val frescoVersion = "3.6.0"
 
 dependencies {
     implementation(libs.androidx.core.ktx)
@@ -63,11 +64,11 @@ dependencies {
     implementation("org.lynxsdk.lynx:lynx-service-image:$lynxVersion")
 
     // image-service dependencies, if not added, images cannot be loaded; if the host APP needs to use other image libraries, you can customize the image-service and remove this dependency
-    implementation("com.facebook.fresco:fresco:2.3.0")
-    implementation("com.facebook.fresco:animated-gif:2.3.0")
-    implementation("com.facebook.fresco:animated-webp:2.3.0")
-    implementation("com.facebook.fresco:webpsupport:2.3.0")
-    implementation("com.facebook.fresco:animated-base:2.3.0")
+    implementation("com.facebook.fresco:fresco:$frescoVersion")
+    implementation("com.facebook.fresco:animated-gif:$frescoVersion")
+    implementation("com.facebook.fresco:animated-webp:$frescoVersion")
+    implementation("com.facebook.fresco:webpsupport:$frescoVersion")
+    implementation("com.facebook.fresco:animated-base:$frescoVersion")
 
     // integrating log-service
     implementation("org.lynxsdk.lynx:lynx-service-log:$lynxVersion")
