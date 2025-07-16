@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id("com.github.liushuixiaoxia.check16k")
 }
 
 android {
@@ -81,4 +83,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+check16k {
+    enable.set(true) // default is true
+    // ignoreError.set(false) // default is true
 }
