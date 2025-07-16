@@ -43,5 +43,7 @@ jobs:
 
       - name: Check Apk
         run: |
+          echo "check debug apk"
           unzip -v lynx-android/app/build/outputs/apk/debug/app-debug.apk | grep assets
+          echo "check release apk"
           unzip -v lynx-android/app/build/outputs/apk/release/app-release-unsigned.apk | grep assets
