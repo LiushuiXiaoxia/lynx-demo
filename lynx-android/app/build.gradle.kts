@@ -71,6 +71,9 @@ dependencies {
     // integrating http-service
     implementation("org.lynxsdk.lynx:lynx-service-http:3.2.0")
 
+    debugImplementation("org.lynxsdk.lynx:lynx-devtool:3.2.0")
+    debugImplementation("org.lynxsdk.lynx:lynx-service-devtool:3.2.0")
+
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
     testImplementation(libs.junit)

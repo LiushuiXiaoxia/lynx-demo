@@ -8,20 +8,17 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        initLynxService()
-        initLynxEnv()
+        initLynx()
     }
 
-    private fun initLynxService() {
-
-    }
-
-    private fun initLynxEnv() {
+    private fun initLynx() {
+        LynxApp.initLynxService()
         LynxEnv.inst().init(
             this,
             null,
             null,
             null
         )
+        LynxApp.initLynxEnv()
     }
 }

@@ -25,11 +25,8 @@ export function App(props: {
       <view className='Background' />
       <view className='App'>
         <view className='Banner'>
-          <view className='Logo' bindtap={onTap}>
-            {alterLogo
-              ? <image src={reactLynxLogo} className='Logo--react' />
-              : <image src={lynxLogo} className='Logo--lynx' />}
-          </view>
+          <image src={reactLynxLogo} className='Logo--react' />1
+          <image src={lynxLogo} className='Logo--lynx' />}
           <text className='Title'>React</text>
           <text className='Subtitle'>on Lynx</text>
           <text className='Subtitle'>by Leon</text>
