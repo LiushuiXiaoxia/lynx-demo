@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.lynx.tasm.provider.AbsTemplateProvider
 import java.io.IOException
+import kotlin.concurrent.thread
 
 class DemoTemplateProvider(context: Context) : AbsTemplateProvider() {
 
@@ -16,7 +17,7 @@ class DemoTemplateProvider(context: Context) : AbsTemplateProvider() {
 
     override fun loadTemplate(uri: String, callback: Callback) {
         Log.i(TAG, "loadTemplate: uri = $uri")
-        Thread {
+        thread {
             runCatching {
                 val data = mContext.assets.open(uri).use { it.readBytes() }
                 callback.onSuccess(data)
@@ -26,6 +27,6 @@ class DemoTemplateProvider(context: Context) : AbsTemplateProvider() {
                 Log.e(TAG, "loadTemplate: uri = $uri, failed", it)
                 callback.onFailed(it.message)
             }
-        }.start()
+        }
     }
 }
