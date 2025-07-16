@@ -24,6 +24,15 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # 你可以替换为你需要的版本
+          cache: 'yarn'
+
+      - name: Build Lynx Module
+        run: cd lynx-Module && yarn install && yarn run build
+      
       - name: Make Gradle executable
         run: cd lynx-android && chmod +x ./gradlew
 
