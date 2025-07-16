@@ -32,6 +32,7 @@ export function App(props: {
           </view>
           <text className='Title'>React</text>
           <text className='Subtitle'>on Lynx</text>
+          <text className='Subtitle'>by Leon</text>
         </view>
         <view className='Content'>
           <image src={arrow} className='Arrow' />
