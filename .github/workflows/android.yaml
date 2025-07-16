@@ -28,10 +28,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'  # 你可以替换为你需要的版本
-          cache: 'yarn'
+      
+      - name: Install Yarn
+        run: npm install -g yarn
 
       - name: Build Lynx Module
-        run: cd lynx-Module && yarn install && yarn run build
+        run: cd lynx-module && yarn install && yarn run build
       
       - name: Make Gradle executable
         run: cd lynx-android && chmod +x ./gradlew
