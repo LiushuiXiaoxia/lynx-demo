@@ -1,8 +1,9 @@
 package cn.mycommons.lynx_android.lynx
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
+import androidx.core.net.toUri
+import cn.mycommons.lynx_android.util.uriInputStream
 import com.lynx.tasm.provider.AbsTemplateProvider
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -49,23 +50,10 @@ class DemoTemplateProvider(val context: Context) : AbsTemplateProvider() {
                 return resp.body?.bytes() ?: throw Exception("Response body is null")
             }
 
-            uri.startsWith("file://") -> {
-                Log.i(TAG, "processUri: loading from file")
-                val uri = Uri.parse(uri)
-                val inputStream = context.contentResolver.openInputStream(uri) ?: throw Exception("Open input stream failed")
-                return inputStream.use { it.readBytes() }
-            }
-
-            uri.startsWith("assets://") -> {
-                // 如果是本地文件，直接显示
-                Log.i(TAG, "processUri: loading from assets")
-                val data = app.assets.open(uri.removePrefix("assets://")).use { it.readBytes() }
-                return data
-            }
-
             else -> {
-                // 默认从网络加载
-                throw Exception("Unsupported uri: $uri")
+                Log.i(TAG, "processUri: loading from uri")
+                return uri.uriInputStream(app)?.readBytes()
+                    ?: throw Exception("Can not open input stream from uri: $uri")
             }
         }
     }

@@ -26,8 +26,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.edtUri.setText("main.lynx.bundle")
-        binding.edtUri.setText("https://macross-jks.bilibili.co/archive/fawkes/pack/infra_ci_lynx/19940111/bundle.zip")
+        binding.edtUri.setText("assets://main.lynx.bundle")
+//        binding.edtUri.setText("https://macross-jks.bilibili.co/archive/fawkes/pack/infra_ci_lynx/19940111/bundle.zip")
+//        binding.edtUri.setText("https://macross-jks.bilibili.co/archive/fawkes/pack/infra_ci_lynx/19940111/main.lynx.bundle")
 
         binding.btnScan.setOnClickListener {
             // 启动扫码页面（用 ZXing）

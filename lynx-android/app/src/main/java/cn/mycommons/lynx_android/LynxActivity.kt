@@ -62,6 +62,7 @@ class LynxActivity : AppCompatActivity() {
             uri.startsWith("file://") -> {
                 showLynxView(uri)
             }
+
             uri.startsWith("assets://") -> {
                 // 如果是 assets 文件，去掉前缀
                 showLynxView(uri)
@@ -74,16 +75,13 @@ class LynxActivity : AppCompatActivity() {
     }
 
     private fun showLynxView(uri: String) {
-        val lynxView = buildLynxView()
+        val viewBuilder: LynxViewBuilder = LynxViewBuilder()
+        viewBuilder.setTemplateProvider(DemoTemplateProvider(this))
+        viewBuilder.setImageFetcher(DemoLynxImageFetcher(this, uri))
+        val lynxView = viewBuilder.build(this)
+
         findViewById<FrameLayout>(R.id.main).addView(lynxView)
         // 如果是本地文件，直接使用文件路径
         lynxView.renderTemplateUrl(uri, "")
-    }
-
-    private fun buildLynxView(): LynxView {
-        val viewBuilder: LynxViewBuilder = LynxViewBuilder()
-        viewBuilder.setTemplateProvider(DemoTemplateProvider(this))
-        viewBuilder.setImageFetcher(DemoLynxImageFetcher(this))
-        return viewBuilder.build(this)
     }
 }
