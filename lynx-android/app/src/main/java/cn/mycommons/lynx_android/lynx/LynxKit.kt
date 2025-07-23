@@ -14,7 +14,11 @@ fun downloadAndUnzip(context: Context, url: String): File {
     // 2. 创建临时目录和 zip 文件路径
     val tempDir = File(context.cacheDir, "lynx_$md5Name").apply { mkdirs() }
     if (tempDir.exists()) {
-        return tempDir
+        val list = tempDir.listFiles() ?: emptyArray<File>()
+        // 如果目录已存在且不为空，直接返回该目录
+        if (list.isNotEmpty()) {
+            return tempDir
+        }
     }
 
     val zipFile = File.createTempFile(md5Name, ".zip", context.cacheDir)

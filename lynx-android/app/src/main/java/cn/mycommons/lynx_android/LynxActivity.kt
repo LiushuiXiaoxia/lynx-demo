@@ -3,6 +3,7 @@ package cn.mycommons.lynx_android
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +18,8 @@ import kotlin.concurrent.thread
 class LynxActivity : AppCompatActivity() {
 
     companion object {
+
+        private const val TAG = "LynxActivity"
 
         const val EXTRA_URI = "EXTRA_URI"
 
@@ -75,6 +78,7 @@ class LynxActivity : AppCompatActivity() {
     }
 
     private fun showLynxView(uri: String) {
+        Log.i(TAG, "showLynxView: uri = $uri")
         val viewBuilder: LynxViewBuilder = LynxViewBuilder()
         viewBuilder.setTemplateProvider(DemoTemplateProvider(this))
         viewBuilder.setImageFetcher(DemoLynxImageFetcher(this, uri))

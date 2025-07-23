@@ -1,6 +1,7 @@
 package cn.mycommons.lynx_android
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -11,6 +12,10 @@ import cn.mycommons.lynx_android.databinding.ActivityMainBinding
 import com.google.zxing.integration.android.IntentIntegrator
 
 class MainActivity : AppCompatActivity() {
+
+    companion object{
+        private const val TAG = "MainActivity"
+    }
 
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun gotoLynxActivity(uri: String) {
+        Log.i(TAG ,"gotoLynxActivity: $uri")
         LynxActivity.gotoLynxActivity(this, uri)
     }
 
