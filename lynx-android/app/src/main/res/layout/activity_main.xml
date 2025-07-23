@@ -3,15 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".LynxActivity">
 
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Scan" />
 
     <EditText
         android:id="@+id/edt_uri"
@@ -25,4 +21,9 @@
         android:layout_height="wrap_content"
         android:text="Go" />
 
+    <Button
+        android:id="@+id/btn_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scan" />
 </LinearLayout>
