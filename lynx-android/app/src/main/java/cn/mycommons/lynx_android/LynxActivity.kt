@@ -9,8 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import cn.mycommons.lynx_android.lynx.DemoLynxImageFetcher
 import cn.mycommons.lynx_android.lynx.DemoTemplateProvider
+import cn.mycommons.lynx_android.lynx.downloadAndUnzip
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
+import kotlin.concurrent.thread
 
 class LynxActivity : AppCompatActivity() {
 
@@ -35,19 +37,53 @@ class LynxActivity : AppCompatActivity() {
             Toast.makeText(this, "uri is null", Toast.LENGTH_SHORT).show()
             return
         }
-        showLynxView(uri)
+        processUri(uri)
+    }
+
+    private fun processUri(uri: String) {
+        when {
+            uri.startsWith("http://") || uri.startsWith("https://") -> {
+                if (uri.endsWith(".zip")) {
+                    // 如果是 zip 文件，下载并解压
+                    thread {
+                        val zipFile = downloadAndUnzip(this, uri)
+                        val uri2 = "file://${zipFile.absolutePath}/main.lynx.bundle"
+
+                        runOnUiThread {
+                            showLynxView(uri2)
+                        }
+                    }
+                } else {
+                    // 如果是网络文件，直接显示
+                    showLynxView(uri)
+                }
+            }
+
+            uri.startsWith("file://") -> {
+                showLynxView(uri)
+            }
+            uri.startsWith("assets://") -> {
+                // 如果是 assets 文件，去掉前缀
+                showLynxView(uri)
+            }
+
+            else -> {
+                showLynxView(uri)
+            }
+        }
     }
 
     private fun showLynxView(uri: String) {
         val lynxView = buildLynxView()
         findViewById<FrameLayout>(R.id.main).addView(lynxView)
+        // 如果是本地文件，直接使用文件路径
         lynxView.renderTemplateUrl(uri, "")
     }
 
     private fun buildLynxView(): LynxView {
         val viewBuilder: LynxViewBuilder = LynxViewBuilder()
-        viewBuilder.setImageFetcher(DemoLynxImageFetcher(this))
         viewBuilder.setTemplateProvider(DemoTemplateProvider(this))
+        viewBuilder.setImageFetcher(DemoLynxImageFetcher(this))
         return viewBuilder.build(this)
     }
 }
