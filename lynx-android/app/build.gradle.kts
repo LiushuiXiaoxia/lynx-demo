@@ -48,7 +48,7 @@ android {
     }
 }
 
-val lynxVersion = "3.3.0"
+val lynxVersion = "3.3.1"
 val frescoVersion = "3.6.0"
 
 dependencies {
