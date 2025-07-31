@@ -65,7 +65,7 @@ dependencies {
     implementation("org.lynxsdk.lynx:lynx:$lynxVersion")
     implementation("org.lynxsdk.lynx:lynx-jssdk:$lynxVersion")
     implementation("org.lynxsdk.lynx:lynx-trace:$lynxVersion")
-    implementation("org.lynxsdk.lynx:primjs:2.13.2")
+    implementation("org.lynxsdk.lynx:primjs:2.14.0-rc.1")
 
     // integrating image-service
     implementation("org.lynxsdk.lynx:lynx-service-image:$lynxVersion")
